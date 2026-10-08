@@ -49,9 +49,18 @@ Add your items starting in row 2. Example:
 | coffee | ground | | 12 oz | |
 | beef | | | | any beef on sale |
 
+The four match columns form a **hierarchy of specificity** — each column narrows the match further than the one before it:
+
+```
+Category → Subcategory → Brand → Size
+(broadest)                        (most specific)
+```
+
+A blank value means "any" at that level. Claude only applies the constraints you fill in — all filled-in fields must match simultaneously.
+
 **Rules:**
 - Leave **Brand** blank to match any brand in that category
-- If **Brand** is filled in, it must match exactly — Claude will not substitute store brands or similar names
+- If **Brand** is filled in, it must match verbatim — Claude will not substitute store brands or similar names
 - Leave **Size** blank to match any size
 - The **Notes** column is for your reference only — it is not sent to Claude
 
